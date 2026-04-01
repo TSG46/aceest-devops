@@ -109,7 +109,44 @@ Jenkins pulls the latest code from GitHub and executes the following build steps
 
 ## DevOps Pipeline Architecture
 
-Developer → GitHub Repository → GitHub Actions CI → Automated Testing → Docker Build → Jenkins Build Pipeline
+## DevOps Pipeline Architecture
+
+```
+              Developer (VS Code)
+                     │
+                     │  Git Commit / Push
+                     ▼
+              GitHub Repository
+                     │
+                     │ Trigger CI Pipeline
+                     ▼
+             GitHub Actions (CI)
+                     │
+         ┌───────────┼────────────┐
+         │           │            │
+         ▼           ▼            ▼
+   Install Dependencies     Run Tests      Build Docker Image
+      (pip install)         (pytest)           (Docker)
+         │
+         ▼
+              Docker Container Image
+                     │
+                     ▼
+               Jenkins Server
+                     │
+                     │ Pull Latest Code
+                     ▼
+            Execute Jenkins Build Job
+                     │
+         ┌───────────┼────────────┐
+         │           │            │
+         ▼           ▼            ▼
+   Install Dependencies     Run Tests      Build Docker Image
+         │
+         ▼
+             CI/CD Pipeline Completed
+```
+
 
 ---
 
