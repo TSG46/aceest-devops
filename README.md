@@ -61,7 +61,7 @@ python -m pytest
 
 Expected result:
 
-All tests should pass successfully.
+All tests passesd successfully.
 
 ---
 
